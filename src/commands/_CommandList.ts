@@ -1,5 +1,5 @@
-import Command from "../interfaces/command";
-import {partTracks} from "./partTracks";
+import Command from '../interfaces/command';
+import { partTracks } from './partTracks';
 
 const CommandList: Command[] = [partTracks];
 

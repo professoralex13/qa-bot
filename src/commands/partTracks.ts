@@ -1,6 +1,6 @@
-import Command from "../interfaces/command";
-import {SlashCommandBuilder} from "@discordjs/builders";
-import {MessageActionRow, MessageButton, MessageEmbed, MessageSelectMenu} from "discord.js";
+import { SlashCommandBuilder } from '@discordjs/builders';
+import { MessageActionRow, MessageButton, MessageEmbed } from 'discord.js';
+import Command from '../interfaces/command';
 
 const songs: { name: string, url: string }[] = [{
     name: '9 to 5',
@@ -21,7 +21,7 @@ const songs: { name: string, url: string }[] = [{
 
 export const partTracks: Command = {
     data: new SlashCommandBuilder()
-        .setName("tracks")
+        .setName('tracks')
         .setDescription('Gets links to all QA part track folders for quick access'),
     run: async (interaction) => {
         const embed = new MessageEmbed();
@@ -29,11 +29,11 @@ export const partTracks: Command = {
         embed.setURL('https://drive.google.com/drive/folders/1yLx7P8IjjUqhMIvEvngDpgo7RVc9HHOP?usp=sharing');
         const embedLinks = new MessageActionRow()
             .addComponents(
-                songs.map(({name, url}) => new MessageButton()
+                songs.map(({ name, url }) => new MessageButton()
                     .setStyle('LINK')
                     .setURL(url)
-                    .setLabel(name))
-            )
+                    .setLabel(name)),
+            );
         await interaction.reply({ embeds: [embed], components: [embedLinks] });
-    }
-}
+    },
+};
